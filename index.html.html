@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accueil Pierre</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('lune-rouge.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      padding-top: 10vh;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0;
+    }
+    .time {
+      font-size: 4em;
+      margin: 0.2em 0;
+    }
+    .quote {
+      font-size: 1.2em;
+      margin: 1em auto;
+      max-width: 600px;
+    }
+    .shortcuts {
+      margin: 2em 0;
+    }
+    .shortcuts a {
+      margin: 0 1em;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .search-bar {
+      margin: 2em auto;
+      max-width: 400px;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 0.5em;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #ffffff33;
+      color: white;
+      cursor: pointer;
+    }
+    .weather {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenue, Pierre</h1>
+    <div class="time" id="time">--:--</div>
+    <div class="quote" id="quote">Citation du jour...</div>
+    <div class="shortcuts">
+      <a href="https://www.google.com">Google</a>
+      <a href="https://www.youtube.com">YouTube</a>
+      <a href="https://fr.wikipedia.org">Wikipedia</a>
+      <a href="https://www.lemonde.fr">Le Monde</a>
+    </div>
+    <div class="search-bar">
+      <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" placeholder="Rechercher..." />
+        <input type="submit" value="🔍" />
+      </form>
+    </div>
+  </div>
+  <div class="weather" id="weather">
+    Royat<br>
+    21°C ☁️<br>
+    mercredi 08:30
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('time').textContent = `${hours}:${minutes}`;
+    }
+
+    function updateQuote() {
+      const quotes = {
+        0: "“Le bonheur est parfois caché dans l'inconnu.” — Victor Hugo",
+        1: "“Le succès n'est pas final. L'échec n'est pas fatal.” — Winston Churchill",
+        2: "“Fais de ta vie un rêve, et d’un rêve une réalité.” — Antoine de Saint-Exupéry",
+        3: "“Il n’y a qu’une façon d’échouer, c’est d’abandonner avant d’avoir réussi.” — Georges Clémenceau",
+        4: "“La vie, c’est comme une bicyclette, il faut avancer pour ne pas perdre l’équilibre.” — Albert Einstein",
+        5: "“On ne voit bien qu’avec le cœur. L’essentiel est invisible pour les yeux.” — Saint-Exupéry",
+        6: "“L’avenir appartient à ceux qui croient à la beauté de leurs rêves.” — Eleanor Roosevelt"
+      };
+      const today = new Date().getDay();
+      document.getElementById('quote').textContent = quotes[today];
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+    updateQuote();
+  </script>
+</body>
+</html>
+
